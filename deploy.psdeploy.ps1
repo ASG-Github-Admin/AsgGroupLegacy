@@ -63,7 +63,7 @@ if (
 
             FromSource $ENV:BHPSModulePath
             To AppVeyor
-            WithOptions @{ Version = 1.0.$env:APPVEYOR_BUILD_VERSION }
+            WithOptions @{ Version = $env:APPVEYOR_BUILD_VERSION }
         }
     }
 }

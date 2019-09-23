@@ -78,7 +78,7 @@ if ([bool] ([Environment]::GetCommandLineArgs() -like '-noni*') -eq $false) {
             }
 
             # Function call
-            $Output = New-EncryptedPasswordFile -Path TestDrive:\PasswdFile
+            $Output = New-EncryptedPasswordFile -Path TestDrive:\PasswdFile -Password $SecStr
     
             It "should have created an encrypted password file" {
         

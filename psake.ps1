@@ -1,5 +1,5 @@
 # Psake makes variables declared here available in other scriptblocks
-# Initialise additional variables 
+# Initialise additional variables
 Properties {
 
     # Find the build folder based on build system
@@ -59,7 +59,7 @@ Task Test -Depends Check {
     $TestFilePath = "$ProjectRoot\$TestFileName"
     $TestRslts = Invoke-Pester -Path $ProjectRoot\Tests -PassThru -OutputFormat NUnitXml -OutputFile $TestFilePath
 
-    # File upload when build system is 'AppVeyor' 
+    # File upload when build system is 'AppVeyor'
     if ($ENV:BHBuildSystem -eq 'AppVeyor') {
 
         (New-Object -TypeName 'System.Net.WebClient').UploadFile(

@@ -9,18 +9,22 @@
     specified file system path.
 
     .EXAMPLE
-    PS C:\PS> New-EncryptedPasswordFile -Path "C:\PowerShell Passwords\Passwd.txt"
+    PS C:\PS> $Password = Read-Host -AsSecureString
+    PS C:\PS> New-EncryptedPasswordFile -Path "C:\PowerShell Passwords\Passwd.txt" -Password $Password
 
     Description
     -----------
-    This creates an encrypted password file 'Passwd.txt' in the 'C:\PowerShell Passwords' directory.
+    This creates an encrypted password file 'Passwd.txt' in the 'C:\PowerShell Passwords' directory, after
+    creating a secure string type object.
 
     .EXAMPLE
-    PS C:\PS> New-EncryptedPasswordFile -Path "C:\PowerShell Passwords\Passwd.txt"
+    PS C:\PS> $Password = Read-Host -AsSecureString
+    PS C:\PS> $Password | New-EncryptedPasswordFile -Path "C:\PowerShell Passwords\Passwd.txt"
 
     Description
     -----------
-    This creates an encrypted password file 'Passwd.txt' in the 'C:\PowerShell Passwords' directory.
+    This creates an encrypted password file 'Passwd.txt' in the 'C:\PowerShell Passwords' directory, after
+    creating a secure string type object, and passing it through the pipeline.
 
     .PARAMETER Password
     Specifies a secure string object containing the password.
@@ -31,7 +35,7 @@
     .INPUTS
     securestring, System.String
 
-    You can pipe a file system path (in quotation mark) to this function.
+    You can pipe a secure string object to this function.
 
     .OUTPUTS
     None
@@ -53,7 +57,7 @@
         [Alias("File", "FilePath")]
         [string] $Path,
 
-        # Output file path
+        # Password
         [Parameter(Mandatory, ValueFromPipeline)]
         [ValidateNotNull()]
         [Alias("Pass", "Passwd")]

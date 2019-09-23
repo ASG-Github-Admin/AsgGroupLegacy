@@ -20,9 +20,6 @@
                                 <PropertyName>RemoteIPAddress</PropertyName>
                             </ListItem>
                             <ListItem>
-                                <PropertyName>PortAvailable</PropertyName>
-                            </ListItem>
-                            <ListItem>
                                 <PropertyName>WinRMEnabled</PropertyName>
                             </ListItem>
 							<ListItem>

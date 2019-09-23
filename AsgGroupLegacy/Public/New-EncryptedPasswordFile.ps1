@@ -43,7 +43,7 @@
     param (
 
         # Output file path
-        [Parameter(Mandatory, ValueFromPipeline)]
+        [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
         [ValidateScript(
             
@@ -51,7 +51,13 @@
             { Split-Path -Path $PSItem -Parent | Test-Path -PathType Container }
         )]
         [Alias("File", "FilePath")]
-        [string] $Path
+        [string] $Path,
+
+        # Output file path
+        [Parameter(Mandatory, ValueFromPipeline)]
+        [ValidateNotNull()]
+        [Alias("Pass", "Passwd")]
+        [securestring] $Password
     )
 
     begin {
@@ -66,11 +72,6 @@
     process {
 
         try {
-
-            # Secure string password prompt
-            Write-Debug -Message "Reading string from host as a secure string"
-            Write-Verbose -Message "Prompting for password from host"
-            $Password = Read-Host -Prompt Password -AsSecureString
 
             # Encrypted string out to file path
             Write-Debug -Message "Converting to encrypted string  and writing to '$Path'"

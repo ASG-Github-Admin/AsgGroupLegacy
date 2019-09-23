@@ -6,8 +6,8 @@
 
     .DESCRIPTION
     The Test-RemotePowerShell function displays diagnostic information for a remote PowerShell connection. The
-    output includes the results of DNS lookup, a listing of the remote TCP/IP interface, WinRM port availability
-    and service enablement, PowerShell version, and a confirmation of connection establishment.
+    output includes the results of DNS lookup, WinRM port availability and service enablement, PowerShell version,
+    and a confirmation of connection establishment.
 
     .EXAMPLE
     PS C:\PS> Test-RemotePowerShell -Name Server1
@@ -30,7 +30,7 @@
     System.String or Microsoft.ActiveDirectory.Management.ADComputer
 
     .OUTPUTS
-    AsgGroup.TestRemotePowerShell
+    AsgGroupLegacy.TestRemotePowerShell
     #>
     
     [CmdLetBinding()]
@@ -103,12 +103,6 @@
             }
             else { Write-Output -InputObject $null }
 
-            # Windows Remote Management (WinRM) network port test
-            "Testing Windows Remote Management (WinRM) TCP port on '$Name' and supressing errors and warnings" |
-            Write-Debug
-            Write-Verbose -Message "Testing Windows Remote Management (WinRM) TCP port"
-            $TCPTest = Test-Connection -ComputerName $Name -TCPPort 5985
-
             # Web Services Management Service (WSMan) test
             "Testing Web Services Management (WSMan) on '$Name' with errors and warnings supressed" |
             Write-Debug
@@ -135,7 +129,6 @@
                 ComputerName    = $Name
                 PingSucceeded   = $PingTestStatus
                 RemoteIPAddress = $RemIPAddr
-                PortAvailable   = $TCPTest
                 WinRMEnabled    = $WSManTest
                 Version         = $PSVerChk
             }

@@ -48,8 +48,7 @@
         [ValidateScript(
             
             # Parent directory path validation
-            { Split-Path -Path $PSItem -Parent | Test-Path -PathType Container },
-            ErrorMessage = "The parent of the path entered '{0}' does not exist."
+            { Split-Path -Path $PSItem -Parent | Test-Path -PathType Container }
         )]
         [Alias("File", "FilePath")]
         [string] $Path

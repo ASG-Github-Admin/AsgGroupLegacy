@@ -107,7 +107,7 @@
             "Testing Windows Remote Management (WinRM) TCP port on '$Name' and supressing errors and warnings" |
             Write-Debug
             Write-Verbose -Message "Testing Windows Remote Management (WinRM) TCP port"
-            $TCPTest = Test-Connection -TargetName $Name -TCPPort 5985
+            $TCPTest = Test-Connection -ComputerName $Name -TCPPort 5985
 
             # Web Services Management Service (WSMan) test
             "Testing Web Services Management (WSMan) on '$Name' with errors and warnings supressed" |

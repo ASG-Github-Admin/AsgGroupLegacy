@@ -43,8 +43,9 @@
         [Parameter(Mandatory, ValueFromPipeline)]
         [ValidateNotNullOrEmpty()]
         [ValidateScript( 
-            { Test-Path -Path $PSItem -PathType Leaf },
-            ErrorMessage = "'{0}' does not exist."
+
+            # File path validation
+            { Test-Path -Path $PSItem -PathType Leaf }
         )]
         [Alias("Path", "FilePath", "PasswordFilePath")]
         [string] $EncryptedPasswordFilePath

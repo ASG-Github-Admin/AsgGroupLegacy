@@ -35,8 +35,7 @@
         [ValidateScript( 
             
             # Directory path validation
-            { Test-Path -Path $PSItem -PathType Container },
-            ErrorMessage = "'{0}' does not exist."
+            { Test-Path -Path $PSItem -PathType Container }
         )]
         [Alias("Directory", "DirectoryPath")]
         [string] $Path

@@ -35,7 +35,11 @@ if (
 
             FromSource $ENV:BHPSModulePath
             To PSGallery
-            WithOptions @{ ApiKey = $ENV:NugetApiKey }
+            WithOptions @{ 
+                
+                ApiKey = $ENV:NugetApiKey
+                Version = 1.0.10
+            }
         }
     }
 }

@@ -76,9 +76,10 @@ if ([bool] ([Environment]::GetCommandLineArgs() -like '-noni*') -eq $false) {
                 "Test".ToCharArray() | ForEach-Object -Process { $SecStr.AppendChar($PSItem) }
                 return $SecStr
             }
+            $Passwd = Read-Host -AsSecureString
 
             # Function call
-            $Output = New-EncryptedPasswordFile -Path TestDrive:\PasswdFile -Password $SecStr
+            $Output = New-EncryptedPasswordFile -Path TestDrive:\PasswdFile -Password $Passwd
     
             It "should have created an encrypted password file" {
         

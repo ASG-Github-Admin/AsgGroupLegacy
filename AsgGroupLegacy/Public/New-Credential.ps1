@@ -42,10 +42,12 @@
         # Encrypted password file path
         [Parameter(Mandatory, ValueFromPipeline)]
         [ValidateNotNullOrEmpty()]
-        [ValidateScript( 
+        [ValidateScript( {
 
-            # File path validation
-            { Test-Path -Path $PSItem -PathType Leaf }
+                # File path validation
+                if (Test-Path -Path $PSItem -PathType Leaf) { Write-Output -InputObject $true }
+                else { throw "'$PSItem' is not a valid file path." }
+            }
         )]
         [Alias("Path", "FilePath", "PasswordFilePath")]
         [string] $EncryptedPasswordFilePath

@@ -49,10 +49,13 @@
         # Output file path
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
-        [ValidateScript(
+        [ValidateScript( {
             
-            # Parent directory path validation
-            { Split-Path -Path $PSItem -Parent | Test-Path -PathType Container }
+                # Parent directory path validation
+                $Parent = Split-Path -Path $PSItem -Parent
+                if (Test-Path -Path $Parent -PathType Container) { Write-Output -InputObject $true }
+                else { throw "'$Parent' is not a valid directory path." }
+            }
         )]
         [Alias("File", "FilePath")]
         [string] $Path,

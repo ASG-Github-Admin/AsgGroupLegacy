@@ -32,10 +32,12 @@
         # Directory path
         [Parameter(Mandatory, ValueFromPipeline)]
         [ValidateNotNullOrEmpty()]
-        [ValidateScript( 
+        [ValidateScript( { 
             
-            # Directory path validation
-            { Test-Path -Path $PSItem -PathType Container }
+                # Directory path validation
+                if (Test-Path -Path $PSItem -PathType Container) { Write-Output -InputObject $true }
+                else { throw "'$PSItem' is not a valid directory path." }
+            }
         )]
         [Alias("Directory", "DirectoryPath")]
         [string] $Path

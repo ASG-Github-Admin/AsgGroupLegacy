@@ -7,7 +7,6 @@
 <h1 id="asggrouplegacy">AsgGroupLegacy</h1>
 <p>This is a generic module for performing basic tasks in PowerShell 5.1.</p>
 <h2 id="getting-started">Getting Started</h2>
-<p>These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.</p>
 <h3 id="prerequisites">Prerequisites</h3>
 <p>You will need PowerShell 5.1.</p>
 <h2 id="deployment">Deployment</h2>

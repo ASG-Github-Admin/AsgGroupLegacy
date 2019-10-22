@@ -39,7 +39,7 @@ function ConvertFrom-EncryptedString {
     System.String
     #>
 
-    #Requires -Version 6.2
+    #Requires -Version 5.1
 
     [CmdLetBinding()]
     param (
